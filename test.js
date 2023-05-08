@@ -18,6 +18,7 @@ var capabilities = {
 		"seleniumVersion" : "3.14.0",
 		"userName" : process.env.BROWSERSTACK_USERNAME,
 		"accessKey" : process.env.BROWSERSTACK_ACCESS_KEY,
+		"localIdentifier" : process.env.localIdentifier
 	},
 	"browserName" : "Safari",
 }
