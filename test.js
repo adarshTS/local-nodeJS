@@ -23,20 +23,6 @@ var capabilities = {
 	"browserName" : "Safari",
 }
 
-const bs_local = new browserstack.Local();
-const bs_local_args = { 'key': process.env.BROWSERSTACK_ACCESS_KEY, 'localIdentifier': process.env.localIdentifier, 'forceLocal': true };
- 
-(async () => {
-  bs_local.start(bs_local_args, function(err) {
-      console.log(err);
-      if (!err){
-          console.log("Started BrowserStackLocal");
-          test (capabilities);
-      }
-      
-    });
-})();
- 
   async function test (capabilities) {
     let driver = new webdriver.Builder()
     .usingServer(`http://${BROWSERSTACK_USERNAME}:${BROWSERSTACK_ACCESS_KEY}@hub-cloud.browserstack.com/wd/hub`)
@@ -72,13 +58,5 @@ const bs_local_args = { 'key': process.env.BROWSERSTACK_ACCESS_KEY, 'localIdenti
     await driver.quit();
   }
 
-
- bs_local.stop(function() {
-    console.log("Stopped BrowserStackLocal");
-});
-
 }
-
-
-
-
+test (capabilities);
