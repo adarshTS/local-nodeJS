@@ -23,21 +23,19 @@ var capabilities = {
 	"browserName" : "Safari",
 }
 
-// const bs_local = new browserstack.Local();
-// const bs_local_args = { 'key': process.env.BROWSERSTACK_ACCESS_KEY };
+const bs_local = new browserstack.Local();
+const bs_local_args = { 'key': process.env.BROWSERSTACK_ACCESS_KEY, 'localIdentifier': process.env.localIdentifier, 'forceLocal': true };
  
-(
- async () => {
-    bs_local.start(bs_local_args, function(err) {
-        console.log(err);
-        if (!err){
-            console.log("Started BrowserStackLocal");
-            test (capabilities);
-        }
-        
-      });
- } 
- )();
+(async () => {
+  bs_local.start(bs_local_args, function(err) {
+      console.log(err);
+      if (!err){
+          console.log("Started BrowserStackLocal");
+          test (capabilities);
+      }
+      
+    });
+})();
  
   async function test (capabilities) {
     let driver = new webdriver.Builder()
@@ -52,13 +50,11 @@ var capabilities = {
     await driver.get('http://127.0.0.1:8081/Documents/CE/sampleWebsite/', 1000);
     await percySnapshot(driver, 'Homepage');
 
-    // await driver.wait(webdriver.until.elementLocated(By.xpath("//a[text()='Designers']"))).click();
-    // // await driver.findElement(By.xpath("//a[text()='Designers']")).click();
-    // await percySnapshot(driver, 'Designers Page');
+    await driver.wait(webdriver.until.elementLocated(By.xpath("//a[text()='Designers']"))).click();
+    await percySnapshot(driver, 'Designers Page');
 
-    // await driver.wait(webdriver.until.elementLocated(By.xpath("//a[text()='Contact']"))).click();
-    // // await driver.findElement(By.xpath("//a[text()='Contact']")).click();
-    // await percySnapshot(driver, 'Contact Page');
+    await driver.wait(webdriver.until.elementLocated(By.xpath("//a[text()='Contact']"))).click();
+    await percySnapshot(driver, 'Contact Page');
 
     await driver.executeScript(
         'browserstack_executor: {"action": "setSessionStatus", "arguments": {"status":"passed","reason": "Done!"}}'
@@ -77,9 +73,9 @@ var capabilities = {
   }
 
 
-//  bs_local.stop(function() {
-//     console.log("Stopped BrowserStackLocal");
-// });
+ bs_local.stop(function() {
+    console.log("Stopped BrowserStackLocal");
+});
 
 }
 
