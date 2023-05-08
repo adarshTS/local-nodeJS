@@ -4,7 +4,6 @@ const percySnapshot = require('@percy/selenium-webdriver');
 const { By } = require('selenium-webdriver');
 const BROWSERSTACK_USERNAME = process.env.BROWSERSTACK_USERNAME;
 const BROWSERSTACK_ACCESS_KEY = process.env.BROWSERSTACK_ACCESS_KEY;
-const browserstack = require('browserstack-local');
 
 var capabilities = {
 	'bstack:options' : {
