@@ -23,8 +23,8 @@ var capabilities = {
 	"browserName" : "Safari",
 }
 
-const bs_local = new browserstack.Local();
-const bs_local_args = { 'key': process.env.BROWSERSTACK_ACCESS_KEY };
+// const bs_local = new browserstack.Local();
+// const bs_local_args = { 'key': process.env.BROWSERSTACK_ACCESS_KEY };
  
 (
  async () => {
@@ -77,9 +77,9 @@ const bs_local_args = { 'key': process.env.BROWSERSTACK_ACCESS_KEY };
   }
 
 
- bs_local.stop(function() {
-    console.log("Stopped BrowserStackLocal");
-});
+//  bs_local.stop(function() {
+//     console.log("Stopped BrowserStackLocal");
+// });
 
 }
 
