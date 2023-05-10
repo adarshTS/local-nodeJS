@@ -18,7 +18,7 @@ var capabilities = {
 		"userName" : process.env.BROWSERSTACK_USERNAME,
 		"accessKey" : process.env.BROWSERSTACK_ACCESS_KEY,
 		"localIdentifier" : process.env.localIdentifier,
-		"build": process.env.BROWSERSTACK_BUILD_NAME
+		"buildName": process.env.BROWSERSTACK_BUILD_NAME
 	},
 	"browserName" : "Safari",
 }
